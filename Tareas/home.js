@@ -6,7 +6,16 @@ const eventDate = document.querySelector('#eventDate');
 const buttonAdd = document.querySelector('#bAdd');
 const eventsContainer = document.querySelector('#eventsContainer');
 
+const json = load();
 
+try {
+    arr = JSON.parse(json);
+} catch (error) {
+    arr = [];
+}
+
+events =arr ? [...arr]: []; //ternary operator, if array has something, return something, else return null.
+renderEvents();
 
 document.querySelector("form").addEventListener("submit", (e)=>{
     e.preventDefault();
@@ -29,6 +38,8 @@ function addEvent() {
     };
 
     events.unshift(newEvent);
+
+    save(JSON.stringify(events));
 
     eventName.value = "";
 
@@ -77,5 +88,5 @@ function save(data){
 }
 
 function load(){
-    localStorage.getItem('items');
+    return localStorage.getItem('items');
 }
