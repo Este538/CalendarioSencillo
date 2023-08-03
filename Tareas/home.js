@@ -12,7 +12,7 @@ try {
     arr = JSON.parse(json);
 } catch (error) {
     arr = [];
-    console.log("A problem has appered");
+    console.log("A problem has appeared");
 }
 
 events =arr ? [...arr]: []; //ternary operator, if array has something, return something, else return null.
